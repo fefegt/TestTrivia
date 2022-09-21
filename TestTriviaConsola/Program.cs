@@ -4,6 +4,8 @@
     {
         static void SetTimer (int tiempoelegido)
         {
+            bool ejecuta = true;
+            
             switch (tiempoelegido) 
             {
                 case 1:
@@ -23,20 +25,31 @@
                 break;
 
                 case 5:
-                    Console.WriteLine("Ingrese la cantidad de segundos:");
-                    tiempoelegido = int.Parse(Console.ReadLine());
+                    try
+                    {
+                        Console.WriteLine("Ingrese la cantidad de segundos:");
+                        tiempoelegido = int.Parse(Console.ReadLine());
+                    }
+                    catch (Exception error) 
+                    {
+                        Console.WriteLine("Se produjo el error:{0}. Asegurese de ingresar un valor numerico", error.Message);
+                        ejecuta = false;
+                        Thread.Sleep(1000);
+                    }
+
                 break;
             }
-            
 
-            for(int t=tiempoelegido; t >= 0; t--) 
+            if (ejecuta == true)
             {
-                tiempoelegido-=5;
-                Console.WriteLine("Quedan {0} segundos para la siguiente ronda.", t);
-                Thread.Sleep(1000);
-                Console.Clear();
+                for (int t = tiempoelegido; t >= 0; t--)
+                {
+                    tiempoelegido -= 5;
+                    Console.WriteLine("Quedan {0} segundos para la siguiente ronda.", t);
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                }
             }
-
         }
         
         

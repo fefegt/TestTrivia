@@ -45,8 +45,9 @@
             string[] opcionesContador = new string[] { "1:30 segundos", "2:60 segundos", "3:90 segundos", "4:120 segundos", "5:Ingresar un tiempo personalizado" };
             int opcionElegida = 0;
 
-            Console.WriteLine("*****************************************");
-            Console.WriteLine("BINVENIDO A===INSERTE NOMBRE DE JUEGO===\n");
+            Console.WriteLine("\t\t*****************************************");
+            Console.WriteLine("\t\t\tBienvenido a Trivia");
+            Console.WriteLine("\t\t*****************************************");
             Console.WriteLine("Seleccione una de las siguientes opciones para asignarle el tiempo al contador:");
 
             foreach (string o in opcionesContador)

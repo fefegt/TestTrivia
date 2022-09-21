@@ -1,11 +1,11 @@
 ﻿namespace TestTriviaConsola
-{
+{   
     internal class Program
     {
         static void SetTimer (int tiempoelegido)
         {
             bool ejecuta = true;
-            
+
             switch (tiempoelegido) 
             {
                 case 1:
@@ -21,47 +21,42 @@
                 break;
 
                 case 4:
-                    tiempoelegido = 120;
-                break;
-
-                case 5:
                     try
                     {
                         Console.WriteLine("Ingrese la cantidad de segundos:");
                         tiempoelegido = int.Parse(Console.ReadLine());
                     }
-                    catch (Exception error) 
+                    catch (Exception e) 
                     {
-                        Console.WriteLine("Se produjo el error:{0}. Asegurese de ingresar un valor numerico", error.Message);
+                        Console.WriteLine("Se produjo el error:{0}. Asegurese de ingresar un valor numerico", e.Message);
                         ejecuta = false;
-                        Thread.Sleep(1000);
                     }
 
+                break;
+
+                default:
+                        tiempoelegido=120;
                 break;
             }
 
             if (ejecuta == true)
             {
-                for (int t = tiempoelegido; t >= 0; t--)
-                {
-                    tiempoelegido -= 5;
-                    Console.WriteLine("Quedan {0} segundos para la siguiente ronda.", t);
-                    Thread.Sleep(1000);
-                    Console.Clear();
-                }
+                Juego newPlayer = new Juego();
+                
+                newPlayer.EjecutarJuego(tiempoelegido);
             }
         }
         
         
         static void Eleccion()
         {
-            string[] opcionesContador = new string[] { "1:30 segundos", "2:60 segundos", "3:90 segundos", "4:120 segundos", "5:Ingresar un tiempo personalizado" };
+            string[] opcionesContador = new string[4] { "1:30 segundos", "2:60 segundos", "3:90 segundos", "4:Ingresar un tiempo personalizado"};
             int opcionElegida = 0;
 
             Console.WriteLine("\t\t*****************************************");
-            Console.WriteLine("\t\t\tBienvenido a Trivia");
+            Console.WriteLine("\t\t\tBienvenido a Tri-Movies");
             Console.WriteLine("\t\t*****************************************");
-            Console.WriteLine("Seleccione una de las siguientes opciones para asignarle el tiempo al contador:");
+            Console.WriteLine("Seleccione una de las siguientes opciones para asignarle el tiempo al temporizador:");
 
             foreach (string o in opcionesContador)
             {
@@ -69,6 +64,7 @@
                 Console.WriteLine(o);
             }
 
+            Console.WriteLine("(Recuerde que la ronda terminara cuando el contador llegue a 0 y por defecto el temporizador esta seteado en 2 minutos)");
             string input = Console.ReadLine();
             Console.Clear();
 

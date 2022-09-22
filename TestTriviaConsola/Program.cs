@@ -1,4 +1,6 @@
-﻿namespace TestTriviaConsola
+﻿using System.Runtime.InteropServices;
+
+namespace TestTriviaConsola
 {   
     internal class Program
     {
@@ -8,6 +10,10 @@
 
             switch (tiempoelegido) 
             {
+                case 0:
+                    tiempoelegido = 120;
+                break;
+                
                 case 1:
                     tiempoelegido = 30;
                 break;
@@ -33,10 +39,6 @@
                     }
 
                 break;
-
-                default:
-                        tiempoelegido=120;
-                break;
             }
 
             if (ejecuta == true)
@@ -50,7 +52,7 @@
         
         static void Eleccion()
         {
-            string[] opcionesContador = new string[4] { "1:30 segundos", "2:60 segundos", "3:90 segundos", "4:Ingresar un tiempo personalizado"};
+            string[] opcionesContador = new string[5] { "0:Por defecto", "1:30 segundos", "2:60 segundos", "3:90 segundos", "4:Ingresar un tiempo personalizado"};
             int opcionElegida = 0;
 
             Console.WriteLine("\t\t*****************************************");
@@ -64,7 +66,7 @@
                 Console.WriteLine(o);
             }
 
-            Console.WriteLine("(Recuerde que la ronda terminara cuando el contador llegue a 0 y por defecto el temporizador esta seteado en 2 minutos)");
+            Console.WriteLine("(Recuerde que la ronda terminara cuando el temporizador llegue a 0 y por defecto esta seteado en 2 minutos)");
             string input = Console.ReadLine();
             Console.Clear();
 
